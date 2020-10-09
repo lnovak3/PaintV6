@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="borderPane" prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="paint.Controller">
+    
+    <top>
+        <VBox> 
+            <MenuBar>
+                <Menu fx:id="fileFxml" text="File"> 
+                    <MenuItem fx:id="new" onAction="#onNew" text="New" />
+                    <MenuItem fx:id="open" onAction="#onOpen" text="Open" />
+                    <MenuItem fx:id="saveAs" onAction="#onSaveAs" text="Save As" />
+                    <MenuItem fx:id="save" onAction="#onSave" text="Save" />
+                    <MenuItem fx:id="quit" onAction="#onExit" text="Quit" />
+                </Menu>
+                
+                
+                
+                <Menu text="Action">
+                    <MenuItem fx:id="undo" onAction="#onUndo" text="Undo" />
+                    <MenuItem fx:id="redo" onAction="#onRedo" text="Redo" />
+                    <MenuItem fx:id="resize" onAction="#onResize" text="Resize" />
+                </Menu>
+                
+                <Menu text="Fill"> 
+                    <MenuItem fx:id="filled" onAction="#onFill" text="Filled" />
+                    <MenuItem fx:id="transparent" onAction="#onTransparent" text="Transparent" />
+                </Menu>
+                
+                <Menu text="Autosave">
+                    <MenuItem fx:id="autosaveOn" onAction="#onAutosaveOn" text="On" />
+                    <MenuItem fx:id="autosaveOff" onAction="#onAutosaveOff" text="Off" />
+                </Menu>
+                <Menu fx:id="help" text="Help">
+                    <MenuItem fx:id="about" onAction="#onAbout" text="About" />
+                </Menu>
+            </MenuBar>
+            
+        </VBox>
+    </top>
+    
+    <bottom>
+        <ToolBar>
+            <Label fx:id="currentTool" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label fx:id="currentCanvas" />
+            <Slider fx:id="slider" blockIncrement="0.1" majorTickUnit="0.5" max="2.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" />
+        </ToolBar>
+    </bottom>
+    <center>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <center>
+                <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER">
+                    <tabs>
+                        <Tab fx:id="tab1" onSelectionChanged="#onTab1" text="Untitled Tab">
+                            <content>
+                                <ScrollPane fx:id="sp1" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                            </content>
+                        </Tab>
+                  <Tab text="Untitled Tab" fx:id="tab2" onSelectionChanged="#onTab2">
+                     <content>
+                        <ScrollPane fx:id="sp2" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Untitled Tab" onSelectionChanged="#onTab3" fx:id="tab3">
+                     <content>
+                        <ScrollPane fx:id="sp3" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Untitled Tab" onSelectionChanged="#onTab4" fx:id="tab4">
+                     <content>
+                        <ScrollPane fx:id="sp4" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Untitled Tab" onSelectionChanged="#onTab5" fx:id="tab5">
+                     <content>
+                        <ScrollPane fx:id="sp5" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Untitled Tab" onSelectionChanged="#onTab6" fx:id="tab6">
+                     <content>
+                        <ScrollPane fx:id="sp6" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Untitled Tab" onSelectionChanged="#onTab7" fx:id="tab7">
+                     <content>
+                        <ScrollPane fx:id="sp7" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                    </tabs>
+                </TabPane>
+            </center>
+        </BorderPane>
+    </center>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <MenuButton fx:id="menuButton" mnemonicParsing="false" popupSide="RIGHT" text="Tools">
+                    <items>
+                        <MenuItem fx:id="noTool" mnemonicParsing="false" onAction="#onNoTool" text="No Tool" />
+                        <MenuItem fx:id="toolEraser" mnemonicParsing="false" onAction="#onEraser" text="Eraser" />
+                        <MenuItem fx:id="selection" mnemonicParsing="false" onAction="#onSelection" text="Selection" />
+                        <MenuItem fx:id="fDraw" mnemonicParsing="false" onAction="#onFreeDraw" text="Free Draw" />
+                        <MenuItem fx:id="lDraw" mnemonicParsing="false" onAction="#onLine" text="Line" />
+                        <MenuItem fx:id="sDraw" mnemonicParsing="false" onAction="#onSquare" text="Square" />
+                        <MenuItem fx:id="rDraw" mnemonicParsing="false" onAction="#onRectangle" text="Rectangle" />
+                        <MenuItem fx:id="cDraw" mnemonicParsing="false" onAction="#onCircle" text="Circle" />
+                        <MenuItem fx:id="eDraw" mnemonicParsing="false" onAction="#onEllipse" text="Ellipse" />
+                        <MenuItem fx:id="triDraw" mnemonicParsing="false" onAction="#onTriangle" text="Triangle" />
+                        <MenuItem fx:id="polygon" mnemonicParsing="false" onAction="#onPolygon" text="Polygon" />
+                        <MenuItem fx:id="tDraw" mnemonicParsing="false" onAction="#onTextBox" text="Text Box" />
+                    </items>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="Poor Richard" size="12.0" />
+                    </font>
+                </MenuButton>
+                <TextField fx:id="brushSize" text="5">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="5.0" right="5.0" top="10.0" />
+                    </VBox.margin>
+                </TextField>
+                <ColorPicker fx:id="colorPicker">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                    </VBox.margin>
+                </ColorPicker>
+            </children>
+        </VBox>
+    </left>
+        
+</BorderPane>
